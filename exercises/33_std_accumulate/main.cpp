@@ -6,6 +6,10 @@
 int main(int argc, char **argv) {
     using DataType = float;
     int shape[]{1, 3, 224, 224};
+    int size = std::accumulate(
+    shape, shape + 4,           // 区间：数组首 ~ 尾
+    sizeof(DataType),           // 初值 = 单个元素字节数(4)
+    [](int acc, int dim) { return acc * dim; });
     // TODO: 调用 `std::accumulate` 计算：
     //       - 数据类型为 float；
     //       - 形状为 shape；
